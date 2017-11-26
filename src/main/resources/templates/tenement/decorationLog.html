@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>装修日志</title>
+    <link rel="stylesheet" href="/css/tenement/decorationLog.css"/>
+    <script src="/js/jquery-3.1.1.min.js"></script>
+    <script src="/js/tenement/decorationLog.js"></script>
+    <script src="/js/tenement/photosView.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="head">
+            <a class="jt" href="###" style="margin-left: 10px"><img src="/img/箭头2.jpg" height="30" width="30"/></a>
+            <h1 class="theme" style="color: white;font-size: 26px">装修日志</h1>
+        </div>
+        <div class="content">
+            <ul class="info" th:each="decorationLogs:${decorationLogs}"><p th:text="${decorationLogs.time}"></p>
+                <li><h3 th:text="${decorationLogs.theme}"></h3>
+                    <div class="content1">
+                        <ul>
+                            <input class="conts" type="hidden" th:value="${decorationLogs.info}"/>
+                            <input class="progress" type="hidden" th:value="${user.progress}"/>
+                            <h3 th:text="${decorationLogs.theme}"></h3>
+                            <b class="jd"><p class="long"><span class="short"></span></p><span class="plan"></span></b>
+                            <h3>当前装修步骤</h3>
+                            <b class="cont"></b>
+                            <li class="tp">
+                                <img th:src="${decorationLogs.tu1}"/>
+                            </li>
+                            <li class="tp">
+                                <img th:src="${decorationLogs.tu2}"/>
+                            </li>
+                            <li class="tp">
+                                <img th:src="${decorationLogs.tu3}"/>
+                            </li>
+                            <li class="tp">
+                                <img th:src="${decorationLogs.tu4}"/>
+                            </li>
+                            <li class="tp">
+                                <img th:src="${decorationLogs.tu5}"/>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

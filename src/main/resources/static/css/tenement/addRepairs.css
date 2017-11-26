@@ -1,0 +1,102 @@
+
+
+*{
+    margin: 0;
+    padding: 0;
+    list-style-type:none;
+    text-decoration: none;
+    font-family: "微软雅黑 Light";
+}
+
+body{
+    width: 800px;
+    height: 630px;
+    background-color: #F8F8F8;
+}
+.container{
+    width: 500px;
+    height: 630px;
+    margin: auto;
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: column nowrap;
+    background-color: white;
+}
+.head{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to left,#F24268,#F85661);
+}
+.jt{
+    position: absolute;
+    left: 160px;
+}
+.content{
+    width: 460px;
+    height: 590px;
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: column nowrap;
+    margin: 0px 20px;
+}
+b{
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    border-bottom: 1px #DCDCDC solid;
+}
+#nr{
+    max-width: 458px;
+    min-height: 100px;
+    max-height: 200px;
+    margin: 20px 0px 10px 0px;
+    font-size: 20px;
+}
+p{
+    color: #DCDCDC;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.tu{
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: row nowrap;
+}
+.p1,.p2,.p3,.p4,.p5{
+    width: 70px;
+    height: 70px;
+    margin-right: 10px;
+}
+.tua,.tub,.tuc,.tud,.tue{
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    z-index: 10;
+}
+input{
+    height: 60px;
+    border: none;
+    outline: none;
+    background-color: #F34467;
+    color: white;
+    font-size: 22px;
+    margin-top: 40px;
+}
+input[type = "file"] {
+    margin: 0;
+}
+
+
+
+
+
+
+
+

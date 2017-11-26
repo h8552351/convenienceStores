@@ -1,0 +1,398 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style-type:none;
+    text-decoration: none;
+    font-family: "微软雅黑 Light";
+    color: black;
+}
+
+
+body{
+    width: 100%;
+    text-align: center;
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    background-color: #F8F8F8;
+    /*background: linear-gradient(to bottom,#F54B65,#F44865);*/
+}
+.container{
+    width: 1300px;
+    height: 600px;
+    margin: 100px 0px 400px 20px ;
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: row nowrap;
+    border: 2px #D6D6D6 solid;
+    overflow: hidden;
+
+}
+.left{
+    width: 200px;
+    min-height: 100%;
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: column nowrap;
+    border-right: 2px #D6D6D6 solid;
+    overflow: auto;
+}
+
+.left input{
+    width: 100%;
+    height: 40px;
+    margin-top: 10px;
+    border-radius: 20px;
+    font-size: 1.8em;
+}
+.content{
+    width: 1100px;
+    min-height: 600px;
+    overflow: auto;
+}
+/*滚动条修改*/
+.content::-webkit-scrollbar {
+    width: 0px;
+    height: 1px;
+}
+
+
+
+
+
+.right{
+    width: 1000px;
+    height: 600px;
+    /*display: none;*/
+}
+.addGoodsType{
+    width: 1000px;
+    height: 600px;
+    display: none;
+}
+.addGoods{
+    width: 1100px;
+    display: none;
+}
+.tab2 tr{
+    border-bottom: none;
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+}
+.tab2 tr td{
+    width: 30%;
+}
+.tab2 tr td input{
+    width: 600px;
+    height: 50px;
+    margin: 0;
+    font-size: 1em;
+    border: none;
+    outline: none;
+    border-bottom: 1px #E9E9E9 solid;
+}
+.putaway{
+    width: 1100px;
+    display: none;
+    margin: 20px 0px;
+    overflow: auto;
+}
+.repairsOperation{
+    width: 1100px;
+    display: none;
+    margin: 20px 0px;
+    overflow: auto;
+}
+.paymentOperation{
+    width: 1100px;
+    display: none;
+    margin: 20px 0px;
+    overflow: auto;
+}
+.announce{
+    width: 1100px;
+    display: none;
+    margin: 20px 0px;
+    overflow: auto;
+}
+.workDisplay{
+    width: 1100px;
+    display: none;
+    margin: 20px 0px;
+    overflow: auto;
+}
+.postPoll{
+    width: 1100px;
+    display: none;
+    margin: 20px 0px;
+    overflow: auto;
+}
+
+.select{
+    margin: 20px 0px;
+}
+table,thead,tbody,tfoot{
+    width: 100%;
+}
+tr{
+    width: 100%;
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    border-bottom: 2px #E9E9E9 solid;
+    padding: 10px 0px;
+}
+td{
+    width: 14%;
+    font-size: 1.6em;
+    color: black;
+}
+td input[type = "button"]{
+    width: 40px;
+    height: 30px;
+    margin-left: 6px;
+    outline: none;
+    color: black;
+    background-color: #F34467;
+}
+
+.tu{
+    width: 200px;
+    height: 300px;
+    text-align: center;
+    /*display: flex;*/
+    /*display: -webkit-flex;*/
+    /*flex-flow: column nowrap;*/
+    float: left;
+    margin: 30px 20px;
+    font-size: 2em;
+}
+.tu a{
+    width: 200px;
+    height: 50px;
+    display: block;
+    border: 1px black solid;
+}
+.city,.plot{
+    width: 1000px;
+    height: 600px;
+}
+.text{
+    width: 600px;
+    height: 50px;
+    margin: 100px 0px 50px 50px;
+    font-size: 1.8em;
+
+}
+#city,#plot,#citys,.select,.select1,.select2,.select3,.select4,.select5,.select6,.select7,.select8{
+    width: 400px;
+    height: 40px;
+    font-size: 1em;
+}
+.but1,.but2,.but,.but3,.but4{
+    width: 200px;
+    height: 40px;
+    font-size: 0.8em;
+    border: 1px black solid;
+    border-radius: 20px;
+}
+.order{
+    width: 1100px;
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: column nowrap;
+    overflow: auto;
+}
+.tab1{
+    background-color: white;
+    margin: 20px 0px;
+}
+.tab1 tr td input{
+    width: 200px;
+    height: 40px;
+    color: black;
+    border-radius: 20px;
+    font-size: 1em;
+    background-color: #E9E9E9;
+}
+
+.repairsOperation,.paymentOperation,.announce,.workDisplay,.postPoll{
+    background-color: white;
+}
+
+.tu_p{
+    width: 100%;
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: row nowrap;
+}
+
+.p1,.p2,.p3,.p4,.p5{
+    width: 70px;
+    height: 70px;
+    margin-right: 10px;
+}
+.tp1,.tp2,.tp3,.tp4,.tp5{
+    width: 70px;
+    height: 70px;
+    /*position: absolute;*/
+    /*z-index: 10;*/
+    /*display: block;*/
+}
+
+/*.tu_p .js-fileapi-wrapper.qiniu-transparent{*/
+    /*margin-left: 20px;*/
+    /*width: 70px;*/
+    /*height: 70px;*/
+    /*position: absolute;*/
+    /*z-index: 20;*/
+/*}*/
+/*.option .js-fileapi-wrapper.qiniu-transparent{*/
+    /*margin-left: 20px;*/
+    /*width: 70px;*/
+    /*height: 70px;*/
+    /*position: absolute;*/
+    /**/
+    /*z-index: 20;*/
+/*}*/
+.poto .js-fileapi-wrapper.qiniu-transparent{
+    position: relative;
+}
+
+.tab3 img{
+    margin-left: 5px;
+}
+.tab3 tr td{
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.tab4 img{
+    margin-left: 5px;
+}
+
+.tab5 tr td{
+    width: 50%;
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+.tab5 tr td input[type="text"]{
+    width: 90%;
+    height: 90%;
+    font-size: 22px;
+}
+
+.tab6 tr td{
+    width: 50%;
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+.tab6 tr td input[type="text"]{
+    width: 90%;
+    height: 90%;
+    font-size: 22px;
+}
+
+.tab7 tr td{
+    width: 50%;
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    /*align-items: center;*/
+}
+.tab7 tr td input[type="text"]{
+    width: 90%;
+    height: 90%;
+    font-size: 22px;
+}
+.tab7 tr td li{
+    width: 100%;
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+
+
+.tab7 tr td li input{
+    margin-left: 10px;
+}
+
+.tab7 tr td li a{
+    margin-left: 10px;
+}
+
+.tab8 tr td{
+    width: 50%;
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+.tab8 tr td input[type="text"]{
+    width: 90%;
+    height: 90%;
+    font-size: 22px;
+}
+
+.tab9 tr td{
+    width: 50%;
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+.tab9 tr td input[type="text"]{
+    width: 90%;
+    height: 90%;
+    font-size: 22px;
+}
+
+
+textarea{
+    width: 90%;
+    height: 100px;
+    font-size: 22px;
+}
+.plus{
+    justify-content: center;
+}
+.plus .pus{
+    width: 60px;
+    height: 40px;
+    border: none;
+    background-color: #7f7f7f;
+    color: white;
+    font-size: 20px;
+}
+.announce,.workDisplay,.postPoll,.decorationLog,.decorationCase{
+    width: 800px;
+    background-color: white;
+    display: none;
+}
+.c-li{
+    font-weight: 600;
+}
+
+.c-zli{
+    font-weight: 600;
+}
+
+
+

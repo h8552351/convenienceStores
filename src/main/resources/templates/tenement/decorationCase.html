@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>新房装修</title>
+    <link rel="stylesheet" href="/css/tenement/decorationCase.css"/>
+    <script src="/js/jquery-3.1.1.min.js"></script>
+    <script src="/js/tenement/decorationCase.js"></script>
+    <script src="/js/tenement/photosView.js"></script>
+</head>
+<body>
+    <div class="container">
+        <form class="form" action="decorationLog" method="post">
+            <input type="hidden" name="phone" th:value="${user.phone}"/>
+        </form>
+        <div class="head">
+            <a class="jt" href="###" style="padding-left: 10px"><img src="/img/箭头2.jpg" height="30" width="30"/></a>
+            <h1 style="color: white;font-size: 26px">新房装修</h1>
+            <a href="###" class="addRepairs" style="padding-right: 10px"><img src="/img/装修进度.jpg" height="40" width="50"/></a>
+        </div>
+        <div class="content">
+            <ul class="info" th:each="decorationCases:${decorationCases}"><p th:text="${decorationCases.time}"></p>
+                <li><b class="rd"><h3 th:text="${decorationCases.theme}"></h3><div class="ht">热度:<div style="width: 20px;padding-left: 10px" th:text="${decorationCases.hot}"></div></div></b>
+                    <div class="content1">
+                        <ul>
+                            <input class="conts" type="hidden" th:value="${decorationCases.info}"/>
+                            <h3 th:text="${decorationCases.theme}"></h3>
+                            <p style="text-align: left" th:text="${decorationCases.time}"></p>
+                            <b class="cont"></b>
+                            <li class="tp">
+                                <img th:src="${decorationCases.tu1}"/>
+                            </li>
+                            <li class="tp">
+                                <img th:src="${decorationCases.tu2}"/>
+                            </li>
+                            <li class="tp">
+                                <img th:src="${decorationCases.tu3}"/>
+                            </li>
+                            <li class="tp">
+                                <img th:src="${decorationCases.tu4}"/>
+                            </li>
+                            <li class="tp">
+                                <img th:src="${decorationCases.tu5}"/>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

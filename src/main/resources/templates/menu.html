@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>选择城市</title>
+    <link rel="stylesheet" href="/css/menu.css"/>
+    <script src="/js/jquery-3.1.1.min.js"></script>
+    <script src="/js/menu1.js"></script>
+
+</head>
+<body>
+<form action="plot" method="get" class="form1">
+<input type="hidden" name="text" th:value="${text}" id="text"/></form>
+    <div class="choice">
+        <div class="header-a">
+            <div class="header-b"><a href="#" class="a" onclick="history.back(-1)"></a></div>
+            <div>选择城市</div>
+            <div></div>
+        </div>
+        <div class="menu">
+            <ul id="accordion" th:each="citys:${citys}">
+                <li class="ua"><a href="#"><p th:text="${citys.cityName}"></p><img src="/img/箭头.jpg" height="32" width="32"/></a>
+                    <ul class="la" th:each="plots:${citys.plots}">
+                        <li><a href="#" th:text="${plots.name}"></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

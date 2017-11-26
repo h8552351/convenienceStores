@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>小区投票</title>
+    <link rel="stylesheet" href="/css/tenement/voteContent.css"/>
+    <script src="/js/jquery-3.1.1.min.js"></script>
+    <script src="/js/tenement/voteContent.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="head">
+            <a class="jt" href="###" style="margin-left: 10px"><img src="/img/箭头2.jpg" height="30" width="30"/></a>
+            <h1 style="color: white;font-size: 26px">小区投票</h1>
+        </div>
+        <input type="hidden" class="status" th:value="${status}"/>
+        <input class="dtory" type="hidden" th:value="${history}"/>
+        <input class="sum" type="hidden" th:value="${sum}"/>
+        <div class="content">
+            <div class="content1">
+                <ul>
+                    <form action="voteOption" method="post">
+                        <input type="hidden" name="theme" th:value="${vote.theme}"/>
+                        <input type="hidden" name="phone" th:value="${user.phone}"/>
+                        <h3 th:text="${vote.theme}">评选最喜爱的物管人员</h3>
+                        <p style="text-align: left" th:text="${vote.time}">2017-06-04</p>
+                        <h4 style="text-align: left" th:text="${vote.content}">8月1日前投票完成，最喜爱的物管人员。请业主踊跃参加。</h4>
+                        <p class="p" style="text-align: left">投票类型:<span class="type" th:text="${vote.type}">单选</span>，最多选择<span class="num" th:text="${vote.num}">1</span>个选项</p>
+                        <div class="poll-results">
+                            <li class="tp" th:each="vContent:${vote.voteContents}">
+                                <img th:src="${vContent.photo}"/>
+                                <h4 th:text="${vContent.info}">张三</h4>
+                                <p class="long"><span class="short"></span></p>
+                                <b>
+                                    <span class="plan"></span>
+                                    <span class="cont" th:text="${vContent.poll}"></span>
+                                </b>
+                            </li>
+                            <input class="but1" type="button" value="投票"/>
+                        </div>
+                    </form>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>新增报修</title>
+    <link rel="stylesheet" href="/css/tenement/addRepairs.css"/>
+    <script src="/js/jquery-3.1.1.min.js"></script>
+    <script src="/js/qiniu.js"></script>
+    <script src="/js/tenement/addRepairs.js"></script>
+</head>
+<body>
+    <form class="form" action="addRepairs" method="post">
+        <input type="hidden" name="phone" th:value="${phone}"/>
+    <div class="container">
+        <div class="head">
+            <a href="###" class="jt" onclick="history.back(-1)"><img src="/img/箭头2.jpg" height="30" width="30"/></a>
+            <h1 style="color: white;font-size: 26px">新增报修</h1>
+
+        </div>
+        <div class="content">
+            <b><img style="border-radius: 5px;margin: 10px" src="/img/物业报修_1.jpg" height="50" width="50"/> <span style="font-size: 22px">新增报修</span></b>
+            <textarea id="nr" class="center" maxlength="30" placeholder="请留下您对本模块的评价"></textarea>
+            <input class="cent" type="hidden" name="center" value=""/>
+            <p>报修图片</p>
+            <div class="tu">
+                <input class="tu1"  type="hidden" name="tua" value=""/>
+                <input class="tu2" type="hidden" name="tub" value=""/>
+                <input class="tu3" type="hidden" name="tuc" value=""/>
+                <input class="tu4" type="hidden" name="tud" value=""/>
+                <input class="tu5" type="hidden" name="tue" value=""/>
+                <div class="p1">
+                    <a class="tua"><img src="/img/添加图片.jpg" height="70" width="70"/></a>
+                </div>
+                <div class="p2">
+                    <a class="tub"><img src="/img/添加图片.jpg" height="70" width="70"/></a>
+                </div>
+                <div class="p3">
+                    <a class="tuc"><img src="/img/添加图片.jpg" height="70" width="70"/></a>
+                </div>
+                <div class="p4">
+                    <a class="tud"><img src="/img/添加图片.jpg" height="70" width="70"/></a>
+                </div>
+                <div class="p5">
+                    <a class="tue"><img src="/img/添加图片.jpg" height="70" width="70"/></a>
+                </div>
+            </div>
+            <input type="button" class="but" value="提交"/>
+        </div>
+    </div>
+    </form>
+</body>
+</html>

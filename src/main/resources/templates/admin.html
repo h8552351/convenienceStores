@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>管理员界面</title>
+    <link rel="stylesheet" href="/css/admin.css"/>
+    <script src="/js/jquery-3.1.1.min.js"></script>
+    <script src="/js/qiniu.js"></script>
+    <script src="/js/admin.js"></script>
+</head>
+<body>
+    <h1>管理员界面</h1>
+    <div class="container">
+        <div class="left">
+            <input style="background-color: #F34467" class="left_nav" type="button" name="po" value="更新图片"/>
+            <input class="left_nav" type="button" name="cy" value="添加城市"/>
+            <input class="left_nav" type="button" name="pt" value="添加小区"/>
+            <input class="left_nav" type="button" name="xj" value="商品操作" />
+            <input class="left_nav" type="button" name="gt" value="添加商品类型"/>
+            <input class="left_nav" type="button" name="so" value="查看订单"/>
+            <input class="left_nav" type="button" name="bx" value="报修操作" />
+            <input class="left_nav" type="button" name="jf" value="缴费操作" />
+            <input class="left_nav" type="button" name="ac" value="发布公告" />
+            <input class="left_nav" type="button" name="wd" value="物业工作展示" />
+            <input class="left_nav" type="button" name="cb" value="发布投票" />
+            <input class="left_nav" type="button" name="al" value="发布装修案例" />
+            <input class="left_nav" type="button" name="cb" value="发布装修日志" />
+        </div>
+
+
+        <div class="content">
+
+        <!--更新图片-->
+        <div class="right">
+            <form id="form" th:action="savePhoto" method="post">
+                    <input type="hidden" name="photo" id="photo"/>
+                    <input type="hidden" name="id" id="id"/>
+
+                <div class="tu" th:each="photos:${photos}">
+                    <img th:src="${photos.photoHref}" height="200" width="200"/>
+                    <a th:id="${photos.id}" href="#" th:text="${photos.id}"></a>
+                </div>
+                <a style="font-size: 26px;" id="result" href="#"/>
+                <div class="text">
+                    <input class="but" type="button" value="更新图片"/>
+                </div>
+            </form>
+        </div>
+
+
+        <!--添加城市-->
+        <div class="city" style="display: none">
+            <form id="form1" th:action="saveCity" method="post">
+            <div class="text">
+                请输入新城市：<input type="text" name="city" id="city"/>
+            </div>
+            <div class="text">
+                <input class="but1" type="button" value="提交城市"/>
+            </div>
+            </form>
+        </div>
+
+
+        <!--添加小区-->
+        <div class="plot" style="display: none">
+            <form id="form2" th:action="savePlot" method="post">
+                <input class="citys" type="hidden" name="citys" value=""/>
+            <div class="text">
+                <select class="select1">
+                    <option class="op1"  selected="selected">请选择城市</option>
+                    <option th:each="city:${cityList}" class="op" th:text="${city.cityName}"></option>
+                </select>
+            </div>
+            <div class="text">
+                请输入小区：<input type="text" name="plot" id="plot"/>
+            </div>
+            <div class="text">
+                <input class="but2" type="button" value="提交小区"/>
+            </div>
+            </form>
+        </div>
+
+        <!--商品操作-->
+        <div class="putaway">
+            <table class="tab">
+                <thead>
+                <tr><td>模块</td><td>商品类型</td><td>商品名称</td><td>价格</td><td>库存</td><td>状态</td><td>操作</td></tr>
+                </thead>
+                <tbody th:each="goodsTypes:${goodsTypes}">
+                <tr th:each="goods:${goodsTypes.goodsList}"><td th:text="${goods.goodsType.module.moduleName}"></td><td th:text="${goods.goodsType.typeName}"></td><td th:text="${goods.goodsName}"></td><td th:text="${goods.price}"></td><td th:text="${goods.goodsNum}"></td><td th:text="${goods.goodsStatus}"></td><td><input class="xj" type="button" name="xiajia" value="下架"/><input class="sj" type="button" name="xiajia" value="上架"/><input class="xg" type="button" name="xiajia" value="修改"/></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!--添加商品类型-->
+        <div class="addGoodsType">
+            <form class="form3" th:action="addGoodsType" method="post">
+            <div class="text">
+                请输入新商品类型：<input type="text" name="typeName" id="city"/>
+            </div>
+            <div class="text">
+                <input class="but3" type="button" value="提交商品类型"/>
+            </div>
+            </form>
+        </div>
+
+            <!--添加商品-->
+        <div class="addGoods">
+            <form class="form4" th:action="addGoods" method="post">
+                <input type="hidden" name="typeName" value=""/>
+                <select class="select">
+                    <option class="op"  selected="selected">请选择商品类型</option>
+                    <option th:each="goodsType:${goodsTypes}" class="op" th:text="${goodsType.typeName}"></option>
+                </select>
+                <table class="tab2">
+                    <tr><td>请输入商品名称:</td><td><input type="text" name="goodsName"/></td></tr>
+                    <tr><td>请输入商品信息:</td><td><input type="text" name="goodsDetails"/></td></tr>
+                    <tr><td>请输入商品价格:</td><td><input type="text" name="price"/></td></tr>
+                    <tr><td>请输入商品库存:</td><td><input type="text" name="goodsNum"/></td></tr>
+                    <tr><td>请输入库存阀值:</td><td><input type="text" name="threshold"/></td></tr>
+                </table>
+
+                <input class="but4" type="button" value="提交商品"/>
+            </form>
+        </div>
+
+            <!--订单操作-->
+        <div class="order" style="display: none">
+            <table class="tab1" th:each="order:${orders}">
+                <thead>
+                    <tr><td>订单编号</td><td>商品总数</td><td>实付</td><td>状态</td><td>配送时间</td><td>订单时间</td></tr>
+                </thead>
+                <tbody>
+                    <tr><td th:text="${order.orderNum}"></td><td th:text="${order.goodsSum}"></td><td th:text="${order.totalMoney}"></td><td th:text="${order.state}"></td><td th:text="${order.shippingMethod}"></td><td th:text="${order.orderTime}"></td></tr>
+                    <tr><td colspan="2">商品名称</td><td colspan="2">商品价格</td><td colspan="2">商品数量</td></tr>
+                    <tr th:each="orderGoods:${order.orderGoodsList}"><td colspan="2" th:text="${orderGoods.goodsName}"></td><td colspan="2" th:text="${orderGoods.price}"></td><td colspan="2" th:text="${orderGoods.number}"></td></tr>
+                </tbody>
+                <tfoot>
+                    <tr><td colspan="6"><input class="jd" type="button" name="jd" value="接单"/></td></tr>
+                </tfoot>
+            </table>
+        </div>
+
+
+        <!--报修操作-->
+        <div class="repairsOperation">
+            <table class="tab3">
+                <tr><td>报修内容</td><td>报修时间</td><td>状态</td><td>报修图片</td><td>操作</td></tr>
+                <tr class="tr3" th:each="repairs:${repairs}">
+                    <td th:text="${repairs.center}"></td>
+                    <td th:text="${repairs.time}"></td>
+                    <td th:text="${repairs.status}"></td>
+                    <td>
+                        <img th:src="${repairs.tu1}" width="70" height="70"/>
+                        <img th:src="${repairs.tu2}" width="70" height="70"/>
+                        <img th:src="${repairs.tu3}" width="70" height="70"/>
+                        <img th:src="${repairs.tu4}" width="70" height="70"/>
+                        <img th:src="${repairs.tu5}" width="70" height="70"/>
+                    </td>
+                    <td><input style="color: white" class="c-li" type="button" value="处理"/></td>
+                </tr>
+            </table>
+        </div>
+
+        <!--缴费操作-->
+        <div class="paymentOperation">
+            <table class="tab4">
+                <tr><td>缴费类型</td><td>缴费金额</td><td>缴费时间</td><td>状态</td><td>操作</td></tr>
+                <tr class="tr4" th:each="payment:${payment}">
+                    <td th:text="${payment.type}"></td>
+                    <td th:text="${payment.money}"></td>
+                    <td th:text="${payment.time}"></td>
+                    <td th:text="${payment.status}"></td>
+                    <td><input style="color: white" class="c-zhi" type="button" value="充值"/></td>
+                </tr>
+            </table>
+        </div>
+
+        <!--发布公告-->
+        <div class="announce">
+            <form class="form5" action="announce" method="post">
+                <input class="gg" type="hidden" name="content"/>
+                <input class="fbxq" type="hidden" name="plotName"/>
+            <table class="tab5">
+                <tr><td>主题</td><td><input type="text" name="theme"/></td></tr>
+                <tr><td>内容</td><td><textarea class="ance" maxlength="300"></textarea></td></tr>
+                <tr><td>添加图片</td>
+                    <td>
+                        <div class="tu_p">
+                            <input class="tua"  type="hidden" name="tu1" value=""/>
+                            <input class="tub" type="hidden" name="tu2" value=""/>
+                            <input class="tuc" type="hidden" name="tu3" value=""/>
+                            <input class="tud" type="hidden" name="tu4" value=""/>
+                            <input class="tue" type="hidden" name="tu5" value=""/>
+                            <div class="p1">
+                                <a class="tp1"><img src="/img/添加图片.jpg" height="70" width="70"/></a>
+                            </div>
+                            <div class="p2">
+                                <a class="tp2"><img src="/img/添加图片.jpg" height="70" width="70"/></a>
+                            </div>
+                            <div class="p3">
+                                <a class="tp3"><img src="/img/添加图片.jpg" height="70" width="70"/></a>
+                            </div>
+                            <div class="p4">
+                                <a class="tp4"><img src="/img/添加图片.jpg" height="70" width="70"/></a>
+                            </div>
+                            <div class="p5">
+                                <a class="tp5"><img src="/img/添加图片.jpg" height="70" width="70"/></a>
+                            </div>
+                        </div>
+                    </td></tr>
+                <tr>
+                    <td colspan="2">
+                        <select class="select4" >
+                            <option class="op1"  selected="selected">请选择发布小区</option>
+                            <option th:each="plot:${plot}" class="op" th:text="${plot.plotName}"></option>
+                        </select>
+                    </td>
+                </tr>
+                <tr><td colspan="2"><input class="but5" style="width: 100px;height: 40px;border-radius: 20px" type="button" value="发布"/></td></tr>
+            </table>
+            </form>
+        </div>
+
+        <!--物业工作展示-->
+        <div class="workDisplay">
+            <form class="form6" action="display" method="post">
+                <input class="zs" type="hidden" name="content"/>
+                <input class="zsxq" type="hidden" name="plotName"/>
+            <table class="tab6">
+                <tr><td>主题</td><td><input type="text" name="theme"/></td></tr>
+                <tr><td>内容</td><td><textarea class="ance" maxlength="300"></textarea></td></tr>
+                <tr><td>添加图片</td>
+                    <td>
+                        <div class="tu_p">
+                            <input class="tua"  type="hidden" name="tu1" value=""/>
+                            <input class="tub" type="hidden" name="tu2" value=""/>
+                            <input class="tuc" type="hidden" name="tu3" value=""/>
+                            <input class="tud" type="hidden" name="tu4" value=""/>
+                            <input class="tue" type="hidden" name="tu5" value=""/>
+                            <div class="p1">
+                                <a class="tp1"><img src="/img/添加图片.jpg" height="70" width="70"/></a>
+                            </div>
+                            <div class="p2">
+                                <a class="tp2"><img src="/img/添加图片.jpg" height="70" width="70"/></a>
+                            </div>
+                            <div class="p3">
+                                <a class="tp3"><img src="/img/添加图片.jpg" height="70" width="70"/></a>
+                            </div>
+                            <div class="p4">
+                                <a class="tp4"><img src="/img/添加图片.jpg" height="70" width="70"/></a>
+                            </div>
+                            <div class="p5">
+                                <a class="tp5"><img src="/img/添加图片.jpg" height="70" width="70"/></a>
+                            </div>
+                        </div>
+                    </td></tr>
+                <tr>
+                    <td colspan="2">
+                        <select class="select5" >
+                            <option class="op1"  selected="selected">请选择展示小区</option>
+                            <option th:each="plot:${plot}" class="op" th:text="${plot.plotName}"></option>
+                        </select>
+                    </td>
+                </tr>
+                <tr><td colspan="2"><input class="but6" style="width: 100px;height: 40px;border-radius: 20px" type="button" value="展示"/></td></tr>
+            </table>
+            </form>
+        </div>
+
+        <!--发布投票-->
+        <div class="postPoll">
+            <form class="form7" action="postPoll" method="post">
+                <input class="fbtp" type="hidden" name="content"/>
+                <input class="type" type="hidden" name="type"/>
+                <input class="num" type="hidden" name="num" value="1"/>
+                <input class="tpxq" type="hidden" name="plotName"/>
+            <table class="tab7">
+                <tr><td>主题</td><td><input type="text" name="theme"/></td></tr>
+                <tr><td>内容</td><td><textarea class="ance" maxlength="300"></textarea></td></tr>
+                <tr>
+                    <td colspan="2">
+                        <select class="select2">
+                            <option class="op2"  selected="selected">请选择投票类型</option>
+                            <option class="op2">单选</option>
+                            <option class="op2">多选</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr style="display: none">
+                    <td colspan="2">
+                        <select class="select3">
+                            <option class="op3"  selected="selected">请选择选项最多选择个数</option>
+                            <option class="op3">1</option>
+                            <option class="op3">2</option>
+                            <option class="op3">3</option>
+                            <option class="op3">4</option>
+                            <option class="op3">5</option>
+                            <option class="op3">6</option>
+                            <option class="op3">7</option>
+                            <option class="op3">8</option>
+                            <option class="op3">9</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr><td>添加投票选项</td>
+                    <td>
+                        <ul class="tdys">
+                            <li class="option" id="one"><a class="poto" id="pt0" href="###"><input type="hidden" name="photo"/><img class="ms" src="/img/添加图片.jpg" height="70" width="70"/></a><input type="text" name="info"/></li>
+                        </ul>
+                        <p class="plus"><input class="pus" type="button" value="增加"/></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <select class="select6" >
+                            <option class="op1"  selected="selected">请选择投票小区</option>
+                            <option th:each="plot:${plot}" class="op" th:text="${plot.plotName}"></option>
+                        </select>
+                    </td>
+                </tr>
+                <tr><td colspan="2"><input class="but7" style="width: 100px;height: 40px;border-radius: 20px;align-self: center" type="button" value="提交"/></td></tr>
+            </table>
+            </form>
+        </div>
+
+
+        <!--发布装修案例-->
+        <div class="decorationCase">
+            <form class="form8" action="case" method="post">
+                <input class="fbal" type="hidden" name="info"/>
+                <input class="alxq" type="hidden" name="plotName"/>
+            <table class="tab8">
+                <tr><td>主题</td><td><input type="text" name="theme"/></td></tr>
+                <tr><td>描述</td><td><textarea class="ance" maxlength="300"></textarea></td></tr>
+                <tr><td>添加图片</td>
+                    <td>
+                        <div class="tu_p">
+                            <input class="tua"  type="hidden" name="tu1" value=""/>
+                            <input class="tub" type="hidden" name="tu2" value=""/>
+                            <input class="tuc" type="hidden" name="tu3" value=""/>
+                            <input class="tud" type="hidden" name="tu4" value=""/>
+                            <input class="tue" type="hidden" name="tu5" value=""/>
+                            <div class="p1">
+                                <a class="tp1"><img src="/img/添加图片.jpg" height="70" width="70"/></a>
+                            </div>
+                            <div class="p2">
+                                <a class="tp2"><img src="/img/添加图片.jpg" height="70" width="70"/></a>
+                            </div>
+                            <div class="p3">
+                                <a class="tp3"><img src="/img/添加图片.jpg" height="70" width="70"/></a>
+                            </div>
+                            <div class="p4">
+                                <a class="tp4"><img src="/img/添加图片.jpg" height="70" width="70"/></a>
+                            </div>
+                            <div class="p5">
+                                <a class="tp5"><img src="/img/添加图片.jpg" height="70" width="70"/></a>
+                            </div>
+                        </div>
+                    </td></tr>
+                <tr>
+                    <td colspan="2">
+                        <select class="select7" >
+                            <option class="op1"  selected="selected">请选择发布小区</option>
+                            <option th:each="plot:${plot}" class="op" th:text="${plot.plotName}"></option>
+                        </select>
+                    </td>
+                </tr>
+                <tr><td colspan="2"><input class="but8" style="width: 100px;height: 40px;border-radius: 20px" type="button" value="发布案例"/></td></tr>
+            </table>
+            </form>
+        </div>
+
+
+        <!--发布装修日志-->
+        <div class="decorationLog">
+            <form class="form9" action="log" method="post">
+                <input class="fbrz" type="hidden" name="info"/>
+                <input class="rzxq" type="hidden" name="userName"/>
+                <table class="tab9">
+                    <tr><td>主题</td><td><input type="text" name="theme"/></td></tr>
+                    <tr><td>描述</td><td><textarea class="ance" maxlength="300"></textarea></td></tr>
+                    <tr><td>添加图片</td>
+                        <td>
+                            <div class="tu_p">
+                                <input class="tua"  type="hidden" name="tu1" value=""/>
+                                <input class="tub" type="hidden" name="tu2" value=""/>
+                                <input class="tuc" type="hidden" name="tu3" value=""/>
+                                <input class="tud" type="hidden" name="tu4" value=""/>
+                                <input class="tue" type="hidden" name="tu5" value=""/>
+                                <div class="p1">
+                                    <a class="tp1"><img src="/img/添加图片.jpg" height="70" width="70"/></a>
+                                </div>
+                                <div class="p2">
+                                    <a class="tp2"><img src="/img/添加图片.jpg" height="70" width="70"/></a>
+                                </div>
+                                <div class="p3">
+                                    <a class="tp3"><img src="/img/添加图片.jpg" height="70" width="70"/></a>
+                                </div>
+                                <div class="p4">
+                                    <a class="tp4"><img src="/img/添加图片.jpg" height="70" width="70"/></a>
+                                </div>
+                                <div class="p5">
+                                    <a class="tp5"><img src="/img/添加图片.jpg" height="70" width="70"/></a>
+                                </div>
+                            </div>
+                        </td></tr>
+                    <tr>
+                        <td colspan="2">
+                            <select class="select8" >
+                                <option class="op1"  selected="selected">请选择发布用户</option>
+                                <option th:each="user:${users}" class="op" th:text="${user.userName}"></option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr><td>用户的装修进度</td><td><input class="progress" type="text" name="progress"/></td></tr>
+                    <tr><td colspan="2"><input class="but9" style="width: 100px;height: 40px;border-radius: 20px" type="button" value="发布日志"/></td></tr>
+                </table>
+            </form>
+        </div>
+        </div>
+    </div>
+</body>
+</html>

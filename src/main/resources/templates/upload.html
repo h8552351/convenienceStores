@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Upload Page</title>
+
+    <style>
+
+        * {
+            font-family: "Microsoft YaHei UI";
+        }
+
+        .uploadButton {
+            width: 200px;
+            height: 60px;
+            border-radius: 25px;
+            background-color: beige;
+            display: flex;
+            flex-flow: row nowrap;
+
+        }
+    </style>
+    <script src="/js/jquery-3.1.1.min.js"></script>
+    <script src="/js/qiniu.js"></script>
+
+
+</head>
+<body>
+    <div class="container">
+    <form action="qiniu" id="form" method="post">
+        <input type="hidden" name="values" id="qiniu"/>
+    </form>
+        <div class="uploadButton" id="uploadButton">
+            <div style="margin: auto;font-weight: bold; font-size: 24px; cursor: pointer;">+ 图片</div>
+        </div>
+
+        <h3>你的上传文件最后的七牛URL地址是</h3>
+        <a style="font-size: 26px;" id="result" href="#">
+        </a>
+    </div>
+
+
+
+    <script>
+        $(document).ready(function () {
+
+            var _token = null;
+            $.ajax({
+                url: '/token',
+                type: 'get',
+                success: function (data) {
+                    _token = data;
+                    console.debug('A: ' + _token);
+                }
+            });
+            // 上传空间URL
+            var uploadSpace = 'http://ors8yq0z3.bkt.clouddn.com';
+            qiniu.config({
+                url: uploadSpace,
+                uploadUrl: 'up-z2.qiniu.com' // 七牛统一的一个上传域名，固定
+            });
+            qiniu.bind($('#uploadButton'), {
+                filter: 'image'
+            }).on('file', function(file) {
+                console.debug('---');
+                var imagesBucket = qiniu.bucket('hjw-java', {
+                    putToken: _token
+                });
+                console.debug('B: ' + _token);
+                // 上传文件名
+//                var fileName = 'abc_' + new Date().getMilliseconds() + '.jpg';
+//                var fileName
+                console.debug(file);
+                var fileName = file.name;
+                fileName = 'images/' + fileName;
+//                    return;
+                console.debug('文件名：'  + fileName);
+                // Upload
+                imagesBucket.putFile(fileName, file)
+                    .then(
+                        function(reply) {
+                            // 上传成功
+//                            console.dir(reply);
+                            console.debug(reply.hash);
+                            console.debug(reply.key);
+                            var se = new Date().getMilliseconds();
+                            $('#result').html(uploadSpace + '/' + fileName + '?v=' + se);
+                            $('#result').prop('href', uploadSpace + '/' + fileName + '?v=' + se);
+                            var  value1 = uploadSpace + '/' + fileName + '?v=' + se;
+                            alert(value1)
+//                            $("#qiniu").val(value1);
+//                            $("#form").submit();
+                        },
+                        function(err) {
+                            // 上传失败
+                            console.error(err);
+                        }
+                    );
+            });
+
+        });
+
+    </script>
+</body>
+</html>

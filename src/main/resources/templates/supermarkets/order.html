@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>订单信息页面</title>
+    <link rel="stylesheet" href="/css/supermarkets/order.css"/>
+    <script src="/js/jquery-3.1.1.min.js"></script>
+    <script src="/js/supermarkets/order.js"></script>
+</head>
+<body>
+    <div class="container">
+        <form class="form1" th:action="evalu" method="post">
+            <input class="name"  type="hidden" name="name" value=""/>
+            <input type="hidden" name="phone" th:value="${user.phone}"/>
+        </form>
+        <!--<form class="form2" action="upOrder" method="post">-->
+            <!--<input type="hidden" name="phone" th:value="${user.phone}"/>-->
+        <!--</form>-->
+        <div class="head">
+            <div style="margin-left: 30px" th:text="${user.plot.plotName}"></div>
+            <div class="mj">迷家</div>
+            <a href="###" style="margin-right: 20px"><img src="/img/信息标志.jpg" height="90" width="90"/></a>
+        </div>
+        <div class="center">
+            <div class="ord" th:each="order:${order}">
+                <div class="ord_top">
+                    <div class="ord_top_left" id="top">
+                        <img th:src="${order.modules.photoHref}" height="134" width="138"/>
+                        <p><h3 th:text="${order.modules.moduleName}"></h3>订单</p>
+                    </div>
+                    <div class="ord_top_right">
+                        <div class="top">
+                            <b>订单编号:<span class="bh" th:text="${order.orderNum}"></span>&nbsp;&nbsp;&nbsp;&nbsp;<span th:text="${order.orderTime}"></span></b>
+                            <a class="stt" href="###" th:text="${order.state}"></a>
+                        </div>
+                        <div class="zhong">
+                            <table>
+                                <tr th:each="orderGoods:${order.orderGoodsList}"><td style="text-align: left" th:text="${orderGoods.goodsName}"></td><td>￥ <span th:text="${orderGoods.price}"></span></td><td style="text-align: right">×<span style="margin-right: 20px" th:text="${orderGoods.number}"></span></td></tr>
+                            </table>
+                        </div>
+                        <div class="button">
+                            <b>共<span th:text="${order.goodsSum}"></span>件商品，实付<span>￥ <span th:text="${order.totalMoney}"></span></span></b>
+                        </div>
+                    </div>
+                </div>
+                <input class="handle" type="button" name="zhifu" th:value="${order.handle}"/>
+            </div>
+        </div>
+        <div class="foot">
+            <a href="#" class="footer-a"><img src="/img/主页2.jpg" height="78" width="178"/><p>主页</p></a>
+            <a href="#" class="footer-a"><img src="/img/订单2.jpg" height="78" width="178"/><p style="color: #F34568">订单</p></a>
+            <a href="#" class="footer-a"><img src="/img/我的.jpg" height="78" width="178"/><p>我的</p></a>
+            <a href="#" class="footer-a"><img src="/img/更多.jpg" height="78" width="178"/><p style="padding-left: 10px">更多</p></a>
+        </div>
+    </div>
+</body>
+</html>

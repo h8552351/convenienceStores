@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>物业服务</title>
+    <link rel="stylesheet" href="/css/tenement/porperlyService.css"/>
+    <script src="/js/jquery-3.1.1.min.js"></script>
+    <script src="/js/tenement/properlyService.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="head">
+            <div class="top">
+                <a href="#" class="return" onclick="history.back(-1)">
+                    <img style="margin: 0px 0px 0px 20px" src="/img/箭头1.jpg" height="30" width="30"/>
+                </a>
+            </div>
+            <div class="center">
+                <div class="center_left"><img style="margin: 0px" src="/img/log1.jpg" height="70" width="70"/></div>
+                <div class="head_center_right">
+                    <h1 style="color: white;margin: 0px" th:text="${plot}">成华小区</h1>
+                    <form class="form" action="" method="post">
+                        <input type="hidden" name="phone" th:value="${phone}"/>
+                    </form>
+
+                    <h2 style="color: white">物业服务</h2>
+                </div>
+            </div>
+            <div class="below"><p style="font-size: 16px">物业功能大集合，一指点击排万难</p></div>
+        </div>
+        <div class="content">
+            <div class="info">
+                <div class="in-box">
+                    <img src="/img/物业报修_1.jpg" height="80" width="80"/>
+                    <div class="rt">
+                        <h1>物业报修</h1>
+                        <h2>专业维修团队,第一时间帮您解决物业设施故障问题。</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="info">
+                <div class="in-box">
+                    <img src="/img/小区公告_1.jpg" height="80" width="80"/>
+                    <div class="rt">
+                        <h1>小区公告</h1>
+                        <h2>停水、停电、停气.....从此告别传统公告方式。</h2>
+                    </div>
+                </div>
+        </div>
+            <div class="info">
+                <div class="in-box">
+                    <img src="/img/业主投票_1.jpg" height="80" width="80"/>
+                    <div class="rt">
+                        <h1>小区投票</h1>
+                        <h2>小区整改靠大家,迷家APP投票方便、快捷,让业主真正做社区主人。</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="info">
+                <div class="in-box">
+                    <img src="/img/物业工作展示_1.jpg" height="80" width="80"/>
+                    <div class="rt">
+                        <h1>物业工作展示</h1>
+                        <h2>可能你平时没看到,但你确确实实有一个相当不得了的物业团队。</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="info">
+                <div class="in-box">
+                    <p class="ig" href="###"><img style="background-color: #F24268;margin: 0;border: none" src="/img/生活缴费.png" height="60" width="60"/></p>
+                    <div class="rt">
+                        <h1>生活缴费</h1>
+                        <h2>迷家APP水、电、气充值方便、快捷,不让业主再为充值而烦恼。</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,110 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    list-style-type:none;
+    text-decoration: none;
+    font-family: "微软雅黑 Light";
+    color: white;
+}
+
+
+body{
+    width: 100%;
+    /*height: 1600px;*/
+    background: linear-gradient(to bottom,#F54B65,#F44865);
+}
+.header{
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to bottom,#F32634,#F44766);
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 3em;
+    /*color: white;*/
+}
+.container{
+    width: 100%;
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: column nowrap;
+
+}
+.header-left{
+    width: 60px;
+    height: 60px;
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: column nowrap;
+}
+.return{
+    background: url("../img/登录页面.jpg") -10px -65px no-repeat;
+    width: 60px;
+    height: 65px;
+    /*background-size: cover;*/
+}
+.log{
+    width: 100%;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;;
+    background: linear-gradient(to bottom,#F54B65,#F44A65);
+    margin-top: 120px;
+}
+.log-a{
+    background: url("../img/登录页面.jpg") -200px -200px no-repeat;
+    width: 360px;
+    height: 300px;
+}
+.input{
+    width: 97%;
+    height: 60px;
+    border-bottom: 2px white solid;
+    margin: 60px 20px 0px 20px;
+    font-size: 2em;
+    display: flex;
+    display: -webkit-flex;
+    /*justify-content: center;*/
+    flex-flow: row nowrap;
+    /*justify-content: center;*/
+}
+.input-a{
+    width: 97%;
+    height: 60px;
+    border-bottom: 2px white solid;
+    margin: 30px 20px 0px 20px;
+    font-size: 2em;
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: row nowrap;
+}
+.input input,.input-a input{
+    width: 500px;
+    height: 50px;
+    background-color: transparent;
+    border: 0;
+    margin-left: 50px;
+    /*去除input点击时的边框*/
+    outline: medium;
+    font-size: 1em;
+}
+.but{
+    align-self: center;
+    margin-top: 50px;
+}
+.but input{
+    border-radius: 50px;
+    width: 600px;
+    height: 100px;
+    font-size: 3em;
+    border: 2px white solid;
+    background: linear-gradient(to bottom,#F34467,#F34367);
+    margin-top: 20px;
+    outline: medium;
+}
+.but a{
+    font-size: 2em;
+}

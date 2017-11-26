@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>评价页面</title>
+    <link rel="stylesheet" href="/css/supermarkets/evaluate.css"/>
+    <script src="/js/jquery-3.1.1.min.js"></script>
+    <script src="/js/qiniu.js"></script>
+    <script src="/js/supermarkets/evaluate.js"></script>
+
+</head>
+<body>
+    <form class="form" action="evaluate" method="post">
+        <input type="hidden" name="phone" th:value="${phone}"/>
+        <input type="hidden" name="moduleName" th:value="${name}"/>
+        <input class="content" type="hidden" name="content" value=""/>
+    <div class="container">
+        <div class="head">
+            <a href="###"><img src="/img/结算箭头.jpg" height="70" width="40"/></a>
+            <h2>评价</h2>
+        </div>
+        <b><img src="/img/社区超市.jpg" height="100" width="100"/><span th:text="${name}"></span></b>
+        <textarea id="nr" rows="10" cols="2" class="center" maxlength="30" placeholder="请留下您对本模块的评价"></textarea>
+        <p>评价图片</p>
+        <div class="tu">
+            <input class="tu1"  type="hidden" name="tua" value=""/>
+            <input class="tu2" type="hidden" name="tub" value=""/>
+            <input class="tu3" type="hidden" name="tuc" value=""/>
+            <div class="tua">
+                <a href="###" name="tua" style="width: 140px;height: 140px"><img src="/img/添加图片.jpg" height="140" width="140"/></a>
+            </div>
+            <div class="tub">
+                <a href="###" name="tub" style="width: 140px;height: 140px"><img src="/img/添加图片.jpg" height="140" width="140"/></a>
+            </div>
+            <div class="tuc">
+                <a href="###" name="tuc" style="width: 140px;height: 140px"><img src="/img/添加图片.jpg" height="140" width="140"/></a>
+            </div>
+        </div>
+        <input type="button" class="but" value="提交"/>
+    </div>
+    </form>
+</body>
+</html>

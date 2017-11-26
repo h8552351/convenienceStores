@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>小区投票</title>
+    <link rel="stylesheet" href="/css/tenement/voteOption.css"/>
+    <script src="/js/jquery-3.1.1.min.js"></script>
+    <script src="/js/tenement/voteOption.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="head">
+            <a onclick="history.back(-1)" class="jt" href="###" style="margin-left: 10px"><img src="/img/箭头2.jpg" height="30" width="30"/></a>
+            <h1 style="color: white;font-size: 26px">小区投票</h1>
+        </div>
+        <input class="status" type="hidden"/>
+        <input class="sum" type="hidden" th:value="${sum}"/>
+        <div class="content">
+            <div class="content1">
+                <ul>
+                    <form action="votePoll" method="post">
+                    <h3 th:text="${vote.theme}">评选最喜爱的物管人员</h3>
+                    <p style="text-align: left" th:text="${vote.time}">2017-06-04</p>
+                    <h4 style="text-align: left" th:text="${vote.content}">8月1日前投票完成，最喜爱的物管人员。请业主踊跃参加。</h4>
+                    <p class="p" style="text-align: left">投票类型:<span class="type" th:text="${vote.type}">单选</span>，最多选择<span class="num" th:text="${vote.num}">1</span>个选项</p>
+
+                        <input type="hidden" name="phone" th:value="${user.phone}"/>
+                        <input type="hidden" name="theme" th:value="${vote.theme}"/>
+
+                    <div class="poll-handle">
+                        <div class="handle"  th:each="vContent:${vote.voteContents}">
+                            <label for=""><img width="60px" height="60px" th:src="${vContent.photo}"/><h4 th:text="${vContent.info}">张三</h4></label>
+                            <div class="checkbox">
+                                <input type="" name="1" id=""/>
+                                <label class="la" for="">
+                                    <label class="lb"></label>
+                                </label>
+                            </div>
+                        </div>
+                        <input class="but2" type="button" value="提交投票并查看结果"/>
+                    </div>
+                    </form>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

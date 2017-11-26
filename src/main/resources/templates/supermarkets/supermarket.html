@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>社区超市页面</title>
+    <link rel="stylesheet" href="/css/supermarkets/supermarket.css"/>
+    <script src="/js/jquery-3.1.1.min.js"></script>
+    <script src="/js/supermarkets/supermarket.js"></script>
+
+</head>
+<body>
+<form class="form_sc" action="" method="post">
+    <input class="goodsSum" type="hidden" name="goodsSum" value=""/>
+    <input class="totalMoney" type="hidden" name="totalMoney" value=""/>
+
+    <div class="container_supermarket">
+        <div class="head">
+            <div class="head_top">
+                <a href="#" class="return" onclick="history.back(-1)">
+                    <img src="/img/箭头1.jpg" height="60" width="60"/>
+                </a>
+                <a href="#" class="seek">
+                    <img src="/img/搜索.jpg" height="60" width="60"/>
+                </a>
+            </div>
+            <div class="head_center">
+                <div class="head_center_left"><img src="/img/log1.jpg" height="142" width="142"/></div>
+                <div class="head_center_right">
+                    <h1 th:text="${plotName}"></h1>
+                    <input type="hidden" name="plotName" th:value="${plotName}"/>
+                    <h2 th:text="${module.moduleName}"></h2>
+                    <input id="modl" type="hidden" name="module" th:value="${module.moduleName}"/>
+                </div>
+            </div>
+            <div class="head_below"><p>宜选宜买宜便宜，购好购真购实惠</p></div>
+        </div>
+        <div class="nav"><p class="nav_goods" style="border-bottom: 4px #D43F5F solid;">商品</p><p class="nav_comment">评论</p></div>
+            <div class="content_goods">
+                <div class="goods_left">
+                    <ul th:each="goodsTypes:${goodsTypes}" class="goods_ul" id="goodsu">
+                        <li><p th:text="${goodsTypes.typeName}"></p>
+                            <div class="goods_right" style="display: block">
+                                <p th:text="${goodsTypes.typeName}" style="text-align: left;border-left: 3px #D43F5F solid;height: 10%;margin-bottom: 20px"></p>
+                                <ul th:each="goodsList:${goodsTypes.goodsList}" class="goods_ru" id="goodsru">
+                                    <input type="hidden" name="state" th:value="${goodsList.goodsStatus}"/>
+                                    <li><img src="/img/goods.jpg" height="158" width="156"/>
+                                        <div class="info">
+                                            <h1 th:text="${goodsList.goodsName}"></h1>
+                                            <h4 th:text="${goodsList.goodsDetails}"></h4>
+                                            <div class="infob">
+                                                <div class="infobl">
+                                                    <h1 style="color: red">￥<span th:text="${goodsList.price}" style="color: red"></span></h1>
+                                                    <h4>库存：<span th:text="${goodsList.goodsNum}"></span></h4>
+                                                </div>
+                                                <div class="infobr">
+                                                    <a style="display: none;" href="###" class="minus"><img src="/img/减_看图王.jpg" height="50" width="50"/></a>
+                                                    <h1 style="display: none;"></h1>
+                                                    <a href="###" class="plus"><img src="/img/加.jpg" height="50" width="50"/></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="foot">
+                    <img class="gwCart" src="/img/购物车.jpg" height="80" width="80"/>
+                    <a href="###" class="bub"></a>
+                    <div class="foot_left">
+                        <div class="foot_leftt" style="display: none">
+                            <p>￥ <span></span></p>
+                        </div>
+                        <div class="foot_leftb" style="display: none">
+                            <h4>当前购物车有</h4>
+                            <h4 class="num"></h4>
+                            <h4>件商品</h4>
+                        </div>
+                    </div>
+                    <div class="foot_right">
+                        <a id="shopping" href="#" style="width: 100%;height: 100%;line-height: 130px;text-align: center">前往购物车</a>
+                    </div>
+                </div>
+
+
+                <div class="shopping_cart" style="display: none">
+                    <div class="ly"></div>
+                    <div class="shopping_list">
+                        <div class="shopping_cart_head">
+                            <p style="font-size: 1.6em;color: black;border-left: 8px red solid;padding: 10px;">购物车详情</p><a href="###" id="deleteAll">清空购物车</a>
+                        </div>
+                            <table fitColumns="true" id="tab">
+                                <tr th:each="carts:${module.carts}"><td><input id="tradeName" type='text' name='tradeName' th:value="${carts.tradeName}"/></td><td><div class='infobl' id='tbl'><h1 style='width: 10%;color:black;font-size: 1.8em;'>￥</h1><input id="tradePrice" style='text-align: left' size='2' type='text' name='tradePrice' th:value="${carts.tradePrice}" /></div></td><td><div class='infobr'><a href='###' class='ms'><img style='float: left' src='/img/减_看图王.jpg' height='50' width='50'/></a><input id="buyNum" type='text' name='buyNum' th:value="${carts.buyNum}" /><a href='###' class='ps'><img src='/img/加.jpg' height='50' width='50'/></a></div></td></tr>
+                            </table>
+                    </div>
+                </div>
+            </div>
+    </div>
+    </form>
+
+    <div class="content_evaluate" style="display: none">
+        <ul th:each="eval:${evaluate}">
+            <li>
+                <img src="/img/头像.jpg" height="140" width="140"/>
+                <div class="l_right">
+                    <div class="right_top">
+                        <a href="###" th:text="${eval.us.userName}"></a>
+                        <a href="###" style="font-size: 2em" th:text="${eval.evTime}"></a>
+                    </div>
+                    <a href="###" th:text="${eval.content}"></a>
+                    <div class="photo">
+                        <div>
+                            <img class="evaluate_tu" th:src="${eval.tua}" height="155" width="155"/>
+                        </div>
+                        <div>
+                            <img class="evaluate_tu" th:src="${eval.tub}" height="155" width="155"/>
+                        </div>
+                        <div>
+                            <img class="evaluate_tu" th:src="${eval.tuc}" height="155" width="155"/>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+</body>
+</html>

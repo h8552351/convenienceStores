@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>小区公告</title>
+    <link rel="stylesheet" href="/css/tenement/communityBulletin.css"/>
+    <script src="/js/jquery-3.1.1.min.js"></script>
+    <script src="/js/tenement/communityBulletin.js"></script>
+    <script src="/js/tenement/photosView.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="head">
+            <a class="jt" href="###" style="margin-left: 10px"><img src="/img/箭头2.jpg" height="30" width="30"/></a>
+            <h1 style="color: white;font-size: 26px">小区公告</h1>
+        </div>
+        <div class="content">
+            <ul class="info" th:each="bulletin:${communitybulletins}"><p th:text="${bulletin.time}"></p>
+                <li><h3 th:text="${bulletin.theme}"></h3>
+                    <div class="content1">
+                        <ul>
+                            <input class="conts" type="hidden" th:value="${bulletin.content}"/>
+                            <h3 th:text="${bulletin.theme}"></h3>
+                            <p style="text-align: left" th:text="${bulletin.time}"></p>
+                            <b class="cont"></b>
+                            <li class="tp">
+                                <img th:src="${bulletin.tu1}"/>
+                            </li>
+                            <li class="tp">
+                                <img th:src="${bulletin.tu2}"/>
+                            </li>
+                            <li class="tp">
+                                <img th:src="${bulletin.tu3}"/>
+                            </li>
+                            <li class="tp">
+                                <img th:src="${bulletin.tu4}"/>
+                            </li>
+                            <li class="tp">
+                                <img th:src="${bulletin.tu5}"/>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

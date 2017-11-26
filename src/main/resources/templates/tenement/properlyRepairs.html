@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>物业报修</title>
+    <link rel="stylesheet" href="/css/tenement/properlyRepairs.css"/>
+    <script src="/js/jquery-3.1.1.min.js"></script>
+    <script src="/js/tenement/properlyRepairs.js"></script>
+</head>
+<body>
+<form class="form1" action="properlyService" method="post">
+    <input type="hidden" name="phone" th:value="${user.phone}"/>
+    <input type="hidden" name="name" th:value="${user.plot.plotName}"/>
+</form>
+<form class="form" action="repairs" method="post"><input type="hidden" name="phone" th:value="${user.phone}"/></form>
+    <div class="container">
+        <div class="head">
+            <a class="jt" href="###" style="padding-left: 10px" onclick="history.back(-1)"><img src="/img/箭头2.jpg" height="30" width="30"/></a>
+            <h1 style="color: white;font-size: 26px">物业报修</h1>
+            <a href="###" class="addRepairs" style="padding-right: 10px"><img src="/img/新增报修.jpg" height="30" width="30"/></a>
+        </div>
+        <div class="content">
+            <div class="info" th:each="properlyRepairs:${properlyRepairsList}">
+                <p th:text="${properlyRepairs.time}"></p>
+                <b><h3 th:text="${properlyRepairs.center}"></h3><a href="###" th:text="${properlyRepairs.status}"></a></b>
+                <input class="but" type="button" value="确认处理完毕"/>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

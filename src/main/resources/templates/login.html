@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>登录</title>
+    <link rel="stylesheet" href="/css/login.css"/>
+    <script src="/js/jquery-3.1.1.min.js"></script>
+    <script src="/js/login.js"></script>
+
+</head>
+<body>
+<form id="form" th:action="login" method="post" >
+    <div class="container">
+        <div class="header">
+            <div class="header-left"><a href="#" class="return" onclick="history.back(-1)"></a></div>
+            <div>登录</div>
+            <div><a href="/registers">注册</a></div>
+        </div>
+        <div class="log">
+            <div class="log-a" ></div>
+        </div>
+        <div class="input" style="border: none;justify-content: center">
+            <h3 th:text="${msg}"></h3>
+        </div>
+        <div class="input">
+           手机&nbsp;<input type="text" name="phone" th:value="${phone}"/>
+        </div>
+        <div class="input-a">
+            密码&nbsp;<input type="password" name="pwd" th:value="${pwd}"/>
+        </div>
+        <div class="but">
+            <input id="but" type="button" value="登录"/>
+        </div>
+
+        <div class="but">
+            <a href="/retrievePasswords">忘记密码？</a>
+        </div>
+    </div>
+</form>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>充值历史</title>
+    <link rel="stylesheet" href="/css/tenement/rechargeHistory.css"/>
+    <script src="/js/jquery-3.1.1.min.js"></script>
+    <script src="/js/tenement/rechargeHistory.js"></script>
+</head>
+<body>
+<form class="form" action="repairs" method="post"><input type="hidden" name="phone" th:value="${user.phone}"/></form>
+    <div class="container">
+        <div class="head">
+            <a class="jt" href="###" style="padding-left: 10px" onclick="history.back(-1)"><img src="/img/箭头2.jpg" height="30" width="30"/></a>
+            <h1 style="color: white;font-size: 26px">充值历史</h1>
+        </div>
+        <div class="content">
+            <div class="info" th:each="livingPayments:${user.livingPayments}">
+                <table>
+                    <tr><td colspan="3"><p th:text="${livingPayments.time}"></p></td></tr>
+                    <tr><td th:text="${livingPayments.type}"></td>
+                        <td th:text="${livingPayments.money}"></td>
+                        <td class="td"><a href="###" th:text="${livingPayments.status}"></a></td></tr>
+                    <tr><td colspan="3"><input class="but" type="button" value="确认充值完毕"/></td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

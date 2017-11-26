@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>结算订单页面</title>
+    <link rel="stylesheet" href="/css/supermarkets/tallyOrder.css"/>
+    <script src="/js/jquery-3.1.1.min.js"></script>
+    <!--<script src="/js/supermarkets/pay.js"></script>-->
+    <script src="/js/supermarkets/tallyOrder.js"></script>
+</head>
+<body>
+<form class="form" action="orders" method="post" >
+    <input type="hidden" name="orderNum" th:value="${order.orderNum}"/>
+    <input class="goodsSum" type="hidden" name="goodsSum" value=""/>
+    <input class="shippingMethod" type="hidden" name="shippingMethod" value=""/>
+    <div class="container">
+        <div class="head">
+            <a href="###"><img src="/img/结算箭头.jpg" height="70" width="40"/></a>
+            <h2>结算订单</h2>
+        </div>
+        <div class="center">
+            <div class="center_top">
+                <h1>姓名</h1>
+                <p th:text="${order.user.userName}"></p>
+                <h1>地址</h1>
+                <p><span th:text="${order.user.plot.city.cityName}"></span>&nbsp;<span th:text="${order.user.plot.plotName}">成华小区</span>&nbsp;<span th:text="${order.user.detailedAddress}">1单元1楼1号</span></p>
+                <h1>商品列表</h1>
+                <table fitColumns="true" id="tab">
+                    <tr th:each="orderGoods:${orderGoods}">
+                        <td><input style="width: 100%" type="text" name="goodsName" th:value="${orderGoods.goodsName}" readonly="readonly"/></td>
+                        <td><input type="text" name="price" th:value="${orderGoods.price}" readonly="readonly"/></td>
+                        <td><div class="alter"><a class="minus"><img src='/img/减_看图王.jpg' height='50' width='50'/></a><input type="text" name="number" th:value="${orderGoods.number}" readonly="readonly"/><a class="plus"><img src='/img/加.jpg' height='50' width='50'/></a></div></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="center_bottom">
+                <h1>优惠券</h1>
+                <b><p>暂无可用优惠券</p></b>
+                <h1>配送时间</h1>
+                <input class="time" type="hidden" name="time" th:value="${order.orderTime}"/>
+                <b><p>预约时间&nbsp;:&nbsp;
+                    <select class="select">
+                        <option class="op" selected="selected">立即送达</option>
+                    </select>
+                </p></b>
+                <h1>支付方式</h1>
+                <b><p>微信支付</p></b>
+            </div>
+        </div>
+        <div class="foot">
+            <p><h1>实付款:</h1><h1>￥</h1><input class="sum" style="text-align: left;width: 30%" type="text" name="totalMoney" value="" readonly="readonly" /></p>
+            <a class="but" href="###">支付订单</a>
+        </div>
+    </div>
+    </form>
+</body>
+</html>

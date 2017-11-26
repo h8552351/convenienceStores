@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>首页</title>
+    <link rel="stylesheet" href="/css/homepage.css"/>
+    <script src="/js/jquery-3.1.1.min.js"></script>
+    <script src="/js/slider.js"></script>
+    <script src="/js/autoScroll.js"></script>
+</head>
+<body>
+<form class="form1" action="logins" method="get"></form>
+    <div class="container">
+        <div class="head">
+            <a href="#" class="login" th:text="${plot}">请登录!</a>
+            <div class="mj">迷家</div>
+            <div class="header-r"><a href="#" class="news"><img src="/img/信息标志.jpg" height="35" width="35"/></a></div>
+        </div>
+        <div class="ad">
+            <div class="bodypage">
+                <img th:each="photos:${photos}" class="" th:src="${photos.photoHref}" height="180" width="500"/>
+            </div>
+        </div>
+        <div class="nav">
+            <form class="fm" action="" method="post"><input type="hidden" name="" class="ipt"/><input type="hidden" name="name" th:value="${plot}"/></form>
+            <div class="nav-a"><img src="/img/社区超市.jpg" height="58" width="60"/><p>社区超市</p></div>
+            <div class="nav-a"><img src="/img/快递寄送.jpg" height="58" width="60"/><p>快递寄送</p></div>
+            <div class="nav-a"><img src="/img/家政服务.jpg" height="58" width="60"/><p>家政服务</p></div>
+            <div class="nav-a"><img src="/img/便民洗涤.jpg" height="58" width="60"/><p>便民洗涤</p></div>
+            <div class="nav-a"><img src="/img/洗车预约.jpg" height="58" width="60"/><p>洗车预约</p></div>
+            <div class="nav-a"><img src="/img/社区二手.jpg" height="58" width="60"/><p>社区二手</p></div>
+            <div class="nav-a"><img src="/img/物业服务.jpg" height="58" width="60"/><p>物业服务</p></div>
+            <div class="nav-a"><img src="/img/家装服务.jpg" height="58" width="60"/><p>装修服务</p></div>
+        </div>
+        <div class="main">
+            <div class="main-a">
+                <div class="main-a-wy">
+                    <a href="#">小区公告</a>
+                    <p>即时公告，精准投放</p>
+                </div>
+                <input type="hidden" class="cont" th:value="${bulletinContent}"/>
+                <div class="content">
+                    <div class='title' th:text="${bulletinTheme}"></div><div id='scrollBox2'></div>
+                </div>
+            </div>
+            <div class="main-a" style="border: none">
+                <div class="main-right">
+                    <div class="main-right-a">
+                        <a href="#">业主投票</a>
+                        <p>轻松便捷，业主福利</p>
+                    </div>
+                    <div class="log-a"><img src="/img/投票.jpg" height="40" width="50"/></div>
+                </div>
+                <div class="main-right">
+                    <div class="main-right-b">
+                        <a href="#">物业工作展示</a>
+                        <p>杰出物业，完美工作</p>
+                    </div>
+                    <div class="log-b"><img src="/img/工作展示.jpg" height="40" width="50"/></div>
+                </div>
+                <div class="main-right">
+                    <div class="main-right-c">
+                        <a href="#">物业报修</a>
+                        <p>专业团队，急速处理</p>
+                    </div>
+                    <div class="log-c"><img src="/img/物业报修.jpg" height="40" width="50"/></div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <form class="forms" action="" method="post"><input class="user" type="hidden" name="name" th:value="${user.phone}"/></form>
+            <a href="#" class="footer-a"><img src="/img/主页1.jpg" height="30" width="80"/><p style="padding-right: 8px;color: #F34568">主页</p></a>
+            <a href="#" class="footer-a"><img src="/img/订单1.jpg" height="30" width="80"/><p>订单</p></a>
+            <a href="#" class="footer-a"><img src="/img/我的.jpg" height="30" width="80"/><p>我的</p></a>
+            <a href="#" class="footer-a"><img src="/img/更多.jpg" height="30" width="80"/><p style="padding-left: 0px">更多</p></a>
+        </div>
+    </div>
+</body>
+</html>

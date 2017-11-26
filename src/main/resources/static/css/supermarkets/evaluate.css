@@ -1,0 +1,117 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    list-style-type:none;
+    text-decoration: none;
+    font-family: "微软雅黑 Light";
+    color: black;
+}
+
+.container{
+    width: 100%;
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: column nowrap;
+    padding-left: 20px;
+}
+
+.head{
+    width: 100%;
+    /*height: 20%;*/
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    background: linear-gradient(to left,#F24268,#F85661);
+}
+
+.head a{
+    position: absolute;
+    left: 40px;
+    top: 16px;
+    z-index: 3;
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+}
+
+h2{
+    color: white;
+    font-size: 3em;
+    margin: 20px 0px;
+}
+
+b{
+    width: 98%;
+    height: 140px;
+    /*padding-left: 20px;*/
+    font-size: 1.6em;
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+.center{
+    width: 94%;
+    /*margin-left: 20px;*/
+    background-color: #DCDCDC;
+    font-size: 1.4em;
+}
+p{
+    font-size: 1.2em;
+    /*padding-left: 20px;*/
+    margin: 10px;
+}
+img{
+    /*margin-left: 20px;*/
+}
+.but{
+    width: 90%;
+    height: 60px;
+    font-size: 1.6em;
+    color: white;
+    background-color: #F34467;
+    outline: none;
+    border: none;
+    margin: 60px 0px 60px 60px;
+}
+.tu{
+    width: 80%;
+    height: 140px;
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: row nowrap;
+}
+.tua{
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: row nowrap;
+    margin-right: 20px;
+}
+.tua img{
+    margin: 0px;
+}
+.tub{
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: row nowrap;
+    margin-right: 20px;
+}
+.tub img{
+    margin: 0px;
+}
+.tuc{
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: row nowrap;
+    margin-right: 20px;
+}
+.tuc img{
+    margin: 0px;
+}
+
+
+
+

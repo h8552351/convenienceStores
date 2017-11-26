@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>生活缴费</title>
+    <link rel="stylesheet" href="/css/tenement/livingPayment.css"/>
+    <script src="/js/jquery-3.1.1.min.js"></script>
+    <script src="/js/tenement/livingPayment.js"></script>
+</head>
+<body>
+    <form class="form" action="rechargeHistory" method="post">
+        <input class="phone" type="hidden" name="phone" th:value="${phone}"/>
+    </form>
+    <div class="container">
+        <div class="top">
+            <div class="head">
+                <a class="jt" href="###"><img src="/img/箭头1.jpg" height="30" width="30" onclick="history.back(-1)"/></a>
+                <h1 style="color: white;font-size: 26px">生活缴费</h1>
+            </div>
+            <div class="center">
+                <p>缴费金额</p>
+                <table class="tab1">
+                    <tr><td><a href="###">100元</a></td><td><a href="###">200元</a></td><td><a href="###">500元</a></td></tr>
+                    <tr><td colspan="3"><a href="###">其他</a></td></tr>
+                    <tr class="tr"><td>请输入金额:</td><td colspan="2"><input class="my" type="text" name="money"/></td></tr>
+                </table>
+            </div>
+            <div class="below">
+                <p>缴费类型</p>
+                <table class="tab2">
+                    <tr><td><a href="###"><img src="/img/水费.jpg" height="90" width="110"/><h3>水费</h3></a></td><td><a href="###"><img
+                            src="/img/电费.jpg" height="90" width="110"/><h3>电费</h3></a></td><td><a href="###"><img
+                            src="/img/气费.jpg" height="90" width="110"/><h3>气费</h3></a></td></tr>
+                    <tr><td style="width: 100%;height: 40px;background-color: white;border: none"><input class="but" type="button" value="确认缴费"/></td></tr>
+                </table>
+            </div>
+        </div>
+        <div class="foot"><a class="rechargeHistory" href="###">充值历史</a></div>
+    </div>
+</body>
+</html>
